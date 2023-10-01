@@ -14,9 +14,9 @@ import platform.LocalAuthentication.LAPolicyDeviceOwnerAuthenticationWithBiometr
 actual class BiometryAuthenticator {
 
     @OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
-    actual suspend fun checkBiometryAuthentication(
+    actual suspend fun biometryAuthentication(
         title: String,
-        reason: String,
+        subtitle: String,
         failureButtonText: String,
     ): Boolean {
         val laContext = LAContext()
@@ -30,6 +30,7 @@ actual class BiometryAuthenticator {
                     error = p.ptr
                 )
             }.getOrNull()
+
             canEvaluate to p.value
         }
 
@@ -39,16 +40,16 @@ actual class BiometryAuthenticator {
         return callbackToCoroutine { callback ->
             laContext.evaluatePolicy(
                 policy = LAPolicyDeviceOwnerAuthenticationWithBiometrics,
-                localizedReason = reason,
+                localizedReason = subtitle,
                 reply = mainContinuation { result: Boolean, error: NSError? ->
-                    callback(result, error)
+                    callback.invoke(result, error)
                 }
             )
         }
     }
 
     @OptIn(ExperimentalForeignApi::class)
-    actual fun isBiometricAvailable(): Boolean {
+    actual fun hasBiometricCapabilities(): Boolean {
         val laContext = LAContext()
         return laContext.canEvaluatePolicy(
             LAPolicyDeviceOwnerAuthenticationWithBiometrics,
