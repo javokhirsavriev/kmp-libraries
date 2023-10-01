@@ -21,13 +21,27 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "uuid"
+            baseName = "biometry"
+        }
+    }
+
+    sourceSets {
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.androidx.appcompat)
+                implementation(libs.androidx.biometric)
+            }
+        }
+        val iosMain by getting {
+            dependencies {
+                implementation(libs.kotlinx.coroutines.core)
+            }
         }
     }
 }
 
 android {
-    namespace = "com.kmp.libraries.uuid"
+    namespace = "com.kmp.libraries.biometry"
     compileSdk = 34
 
     defaultConfig {

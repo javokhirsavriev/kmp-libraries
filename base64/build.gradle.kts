@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.kotlin.cocoapods)
+    alias(libs.plugins.android.library)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -15,17 +14,13 @@ kotlin {
             }
         }
     }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
 
-    cocoapods {
-        summary = "Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android and iOS."
-        homepage = "https://javokhirsavriev.github.io/"
-        version = "1.0"
-        ios.deploymentTarget = "14.1"
-
-        framework {
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
             baseName = "base64"
         }
     }

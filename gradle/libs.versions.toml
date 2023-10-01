@@ -5,6 +5,9 @@ kotlin = "1.9.10"
 
 kotlinx-coroutines-core = "1.7.3"
 
+androidx-appcompat = "1.6.1"
+androidx-biometric = "1.1.0"
+
 compose = "1.5.2"
 compose-compiler = "1.5.3"
 compose-material3 = "1.1.2"
@@ -13,6 +16,9 @@ compose-activity = "1.7.2"
 [libraries]
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
+
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "androidx-biometric" }
 
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
