@@ -20,24 +20,41 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        summary = "Random UUID generator for Kotlin/Multiplatform. Supports Android and iOS."
+        summary =
+            "KMP library to monitor the connectivity status of the device. Supports Android and iOS."
         homepage = "https://javokhirsavriev.github.io/"
         version = "1.0"
         ios.deploymentTarget = "14.1"
+        podfile = project.file("../app-ios/Podfile")
 
         framework {
-            baseName = "uuid"
+            baseName = "connectivity-status"
+        }
+
+        // https://github.com/tonymillion/Reachability
+        pod("Reachability") {
+            version = "3.2"
+        }
+    }
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.kotlinx.coroutines.core)
+            }
         }
     }
 }
 
 android {
-    namespace = "com.kmp.libraries.uuid"
+    namespace = "com.kmp.libraries.connectivity"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 25
     }
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

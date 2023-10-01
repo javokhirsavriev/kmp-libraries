@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'base64'
+    spec.name                     = 'connectivity_status'
     spec.version                  = '1.0'
     spec.homepage                 = 'https://javokhirsavriev.github.io/'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android and iOS.'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/base64.framework'
+    spec.summary                  = 'KMP library to monitor the connectivity status of the device. Supports Android and iOS.'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/connectivity_status.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
-                
+    spec.dependency 'Reachability', '3.2'
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':base64',
-        'PRODUCT_MODULE_NAME' => 'base64',
+        'KOTLIN_PROJECT_PATH' => ':connectivity-status',
+        'PRODUCT_MODULE_NAME' => 'connectivity_status',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build base64',
+            :name => 'Build connectivity_status',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT

@@ -20,7 +20,7 @@ kotlin {
     iosSimulatorArm64()
 
     cocoapods {
-        summary = "Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android and iOS"
+        summary = "Base64 encoder/decoder for Kotlin/Multiplatform. Supports Android and iOS."
         homepage = "https://javokhirsavriev.github.io/"
         version = "1.0"
         ios.deploymentTarget = "14.1"

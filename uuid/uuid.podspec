@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Random UUID generator for Kotlin/Multiplatform. Supports Android and iOS'
+    spec.summary                  = 'Random UUID generator for Kotlin/Multiplatform. Supports Android and iOS.'
     spec.vendored_frameworks      = 'build/cocoapods/framework/uuid.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.1'
