@@ -18,3 +18,4 @@ rootProject.name = "kmp-libraries"
 include(":app-android")
 include(":shared")
 include(":base64")
+include(":uuid")
